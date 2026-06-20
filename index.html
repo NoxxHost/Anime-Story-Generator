@@ -30,99 +30,33 @@
             min-height: 100vh;
         }
 
-        header {
-            text-align: center;
-            padding: 40px 15px 20px;
-        }
-
-        header h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #fff;
-            letter-spacing: 3px;
-            text-shadow: 0 0 20px var(--neon-cyan);
-        }
+        header { text-align: center; padding: 40px 15px 20px; }
+        header h1 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; font-weight: 900; color: #fff; letter-spacing: 3px; text-shadow: 0 0 20px var(--neon-cyan); }
         header h1 span { color: var(--neon-magenta); text-shadow: 0 0 20px var(--neon-magenta); }
         header p { font-size: 0.85rem; letter-spacing: 2px; opacity: 0.6; text-transform: uppercase; margin-top: 5px; }
 
         .container { max-width: 900px; margin: 0 auto; padding: 0 15px 60px; }
-
-        .main-panel {
-            background: var(--panel-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 0 40px rgba(0, 243, 255, 0.1);
-        }
+        .main-panel { background: var(--panel-bg); backdrop-filter: blur(20px); border: 1px solid var(--border-glow); border-radius: 16px; padding: 30px; box-shadow: 0 0 40px rgba(0, 243, 255, 0.1); }
 
         .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            color: var(--neon-cyan);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
-            padding-bottom: 8px;
+            font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--neon-cyan); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(0, 243, 255, 0.1); padding-bottom: 8px;
         }
 
-        .grid-inputs {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
+        .grid-inputs { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 25px; }
         @media(min-width: 768px) { .grid-inputs { grid-template-columns: 1fr 1fr; } }
 
-        .character-card {
-            background: rgba(5, 7, 15, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 20px;
-        }
-
+        .character-card { background: rgba(5, 7, 15, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px; }
         .form-group { margin-bottom: 15px; }
         .form-group.last { margin-bottom: 0; }
         
         label { display: block; margin-bottom: 8px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #aaa; }
-        
-        input, textarea, select {
-            width: 100%;
-            padding: 11px 14px;
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: #fff;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
-            outline: none;
-        }
+        input, textarea, select { width: 100%; padding: 11px 14px; background: rgba(0, 0, 0, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #fff; font-size: 0.9rem; transition: all 0.3s ease; }
+        input:focus, textarea:focus, select:focus { border-color: var(--neon-cyan); box-shadow: 0 0 10px rgba(0, 243, 255, 0.2); outline: none; }
 
         .cyber-btn {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            cursor: pointer;
-            color: #000;
-            background: linear-gradient(90deg, var(--neon-cyan), #00a8ff);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
-            transition: all 0.3s;
-            text-transform: uppercase;
+            width: 100%; padding: 16px; border: none; border-radius: 8px; font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 2px;
+            cursor: pointer; color: #000; background: linear-gradient(90deg, var(--neon-cyan), #00a8ff); box-shadow: 0 0 20px rgba(0, 243, 255, 0.4); transition: all 0.3s; text-transform: uppercase;
         }
         .cyber-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px var(--neon-cyan); }
 
@@ -144,11 +78,11 @@
             <div class="grid-inputs">
                 <div class="form-group">
                     <label><i class="fa-solid fa-ghost"></i> Genre & Tema</label>
-                    <input type="text" id="genre" placeholder="Contoh: Fantasy, Slice of Life">
+                    <input type="text" id="genre" placeholder="Contoh: Fantasy, Romance">
                 </div>
                 <div class="form-group">
-                    <label><i class="fa-solid fa-map-location-dot"></i> Matriks Latar Tempat</label>
-                    <input type="text" id="location" placeholder="Contoh: Kyoto Timur, Akademi Sihir">
+                    <label><i class="fa-solid fa-map-location-dot"></i> Latar Tempat / Kota</label>
+                    <input type="text" id="location" placeholder="Contoh: Tokyo 2026, Aethergaard">
                 </div>
             </div>
 
@@ -157,7 +91,7 @@
                     <div class="section-title"><i class="fa-solid fa-user-gear"></i> Karakter Utama</div>
                     <div class="form-group">
                         <label>Nama</label>
-                        <input type="text" id="c1-name" placeholder="Nama Karakter">
+                        <input type="text" id="c1-name" placeholder="Nama MC">
                     </div>
                     <div class="form-group">
                         <label>Gender</label>
@@ -168,14 +102,14 @@
                     </div>
                     <div class="form-group">
                         <label>Sifat / Kepribadian</label>
-                        <input type="text" id="c1-trait" placeholder="Contoh: Pendiam, Jenius">
+                        <input type="text" id="c1-trait" placeholder="Contoh: Pemberani, Dingin">
                     </div>
                     <div class="form-group last">
-                        <label>Kategori Arketipe</label>
+                        <label>Kategori</label>
                         <select id="c1-role">
                             <option value="Protagonis (MC)">Protagonis (MC)</option>
                             <option value="Heroine">Heroine</option>
-                            <option value="Villain (Antagonis)">Villain (Antagonis)</option>
+                            <option value="Villain">Villain</option>
                         </select>
                     </div>
                 </div>
@@ -195,14 +129,14 @@
                     </div>
                     <div class="form-group">
                         <label>Sifat / Kepribadian</label>
-                        <input type="text" id="c2-trait" placeholder="Contoh: Ceria, Tsundere, Ambisius">
+                        <input type="text" id="c2-trait" placeholder="Contoh: Pemalu, Setengah Kucing">
                     </div>
                     <div class="form-group last">
-                        <label>Kategori Arketipe</label>
+                        <label>Kategori</label>
                         <select id="c2-role">
                             <option value="Heroine">Heroine</option>
                             <option value="Protagonis (MC)">Protagonis (MC)</option>
-                            <option value="Villain (Antagonis)">Villain (Antagonis)</option>
+                            <option value="Villain">Villain</option>
                         </select>
                     </div>
                 </div>
@@ -210,7 +144,7 @@
 
             <div class="form-group" style="margin-bottom: 25px;">
                 <label><i class="fa-solid fa-scroll"></i> Premis / Sinopsis Alur</label>
-                <textarea id="synopsis" rows="3" placeholder="Tulis rincian konflik dasar cerita..."></textarea>
+                <textarea id="synopsis" rows="3" placeholder="Tulis ringkasan ide alur ceritanya..."></textarea>
             </div>
 
             <button class="cyber-btn" onclick="initiateAI()">
@@ -219,9 +153,8 @@
 
             <div class="loading" id="loading">
                 <div class="spinner"></div>
-                <p style="color: var(--neon-cyan); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px;">MEMPROSES JALUR DATA NYATA... HARAP TUNGGU...</p>
+                <p style="color: var(--neon-cyan); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px;">MENGHUBUNGKAN KE INTI AI... MOHON TUNGGU...</p>
             </div>
-
         </div>
     </div>
 
@@ -229,36 +162,27 @@
         async function initiateAI() {
             const fields = ['genre', 'location', 'synopsis', 'c1-name', 'c1-trait', 'c2-name', 'c2-trait'];
             for(let id of fields) {
-                if(!document.getElementById(id).value.trim()) return alert("Semua parameter matriks input wajib diisi!");
+                if(!document.getElementById(id).value.trim()) return alert("Semua kolom input wajib diisi!");
             }
 
             const loading = document.getElementById('loading');
             loading.style.display = 'block';
 
-            const charConfig = `
-            Karakter Utama: Nama: ${document.getElementById('c1-name').value}, Gender: ${document.getElementById('c1-gender').value}, Sifat: ${document.getElementById('c1-trait').value}, Peran: ${document.getElementById('c1-role').value}.
-            Karakter Kedua: Nama: ${document.getElementById('c2-name').value}, Gender: ${document.getElementById('c2-gender').value}, Sifat: ${document.getElementById('c2-trait').value}, Peran: ${document.getElementById('c2-role').value}.`;
+            const charConfig = `Karakter Utama (${document.getElementById('c1-role').value}): Nama ${document.getElementById('c1-name').value}, Gender ${document.getElementById('c1-gender').value}, Sifat ${document.getElementById('c1-trait').value}. Karakter Kedua (${document.getElementById('c2-role').value}): Nama ${document.getElementById('c2-name').value}, Gender ${document.getElementById('c2-gender').value}, Sifat ${document.getElementById('c2-trait').value}.`;
 
             localStorage.setItem("cyber_char_config", charConfig);
             localStorage.setItem("cyber_genre", document.getElementById('genre').value);
             localStorage.setItem("cyber_location", document.getElementById('location').value);
 
-            const prompt = `Buatkan sebuah cerita light novel seru bab awal berdasarkan data berikut.
-            Genre: ${document.getElementById('genre').value}
-            Latar: ${document.getElementById('location').value}
-            Konfigurasi Karakter: ${charConfig}
-            Sinopsis: ${document.getElementById('synopsis').value}
-
-            Aturan Format:
-            Wajib berikan judul fiksi di baris pertama dengan format -> JUDUL: [Ketik Judul Cerita]
-            Di bawah judul, langsung mulai tulis narasi Chapter 1 secara seru, panjang, dan mendalam.`;
+            const prompt = `Buatkan bab pembuka cerita novel anime. Genre: ${document.getElementById('genre').value}. Latar: ${document.getElementById('location').value}. Karakter: ${charConfig}. Sinopsis: ${document.getElementById('synopsis').value}. Format keluaran: Baris pertama ketik saja JUDUL: [Nama Judul], lalu baris berikutnya langsung isi cerita untuk Chapter 1 dengan panjang dan detail.`;
 
             try {
-                const response = await fetch(`https://api.lexcode.biz.id/api/ai/deepseek-v4-pro?text=${encodeURIComponent(prompt)}`);
+                // Menggunakan API Sandipbaruwal yang jauh lebih stabil untuk prompt panjang
+                const response = await fetch(`https://sandipbaruwal.onrender.com/api/gpt4?text=${encodeURIComponent(prompt)}`);
                 const data = await response.json();
                 loading.style.display = 'none';
 
-                let output = data.result || data.reply || data.text || null;
+                let output = data.answer || null;
                 if(output) {
                     let title = "Epic AI Novel";
                     output = output.trim();
@@ -273,11 +197,11 @@
                     localStorage.setItem("cyber_text", output);
                     window.location.href = "cerita.html";
                 } else {
-                    alert("Koneksi ditolak oleh AI Core. Coba lagi.");
+                    alert("Gagal menerima data dari AI Core. Coba klik ulang.");
                 }
             } catch(e) {
                 loading.style.display = 'none';
-                alert("Sistem Crash. Periksa koneksi API.");
+                alert("Gangguan server API. Silakan coba beberapa saat lagi.");
             }
         }
     </script>
