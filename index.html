@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Story Generator AI - Step Chapter</title>
+    <title>Anime Story Generator AI - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -63,16 +63,24 @@
             backdrop-filter: blur(15px);
             border: 1px solid rgba(102, 252, 241, 0.2);
             border-radius: 20px;
-            padding: 20px;
+            padding: 25px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             animation: fadeInUp 1s ease-out;
-            margin-bottom: 30px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        @media (min-width: 600px) {
+            .form-row { grid-template-columns: 1fr 1fr; }
         }
 
         .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 10px; font-weight: 600; color: var(--primary-color); font-size: 0.9rem; }
 
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             padding: 12px;
             background: rgba(11, 12, 16, 0.9);
@@ -83,10 +91,15 @@
             transition: 0.3s;
         }
 
-        input:focus, textarea:focus {
+        input:focus, textarea:focus, select:focus {
             border-color: var(--primary-color);
             box-shadow: 0 0 15px rgba(102, 252, 241, 0.3);
             outline: none;
+        }
+
+        select option {
+            background: var(--bg-color);
+            color: #fff;
         }
 
         .btn {
@@ -110,122 +123,15 @@
 
         .btn:hover { transform: scale(1.01); box-shadow: 0 0 30px var(--primary-color); }
 
-        /* Result Section */
-        .result-box {
-            display: none;
-            background: rgba(31, 40, 51, 0.9);
-            border-radius: 20px;
-            padding: 20px;
-            border-top: 4px solid var(--primary-color);
-            box-shadow: 0 10px 50px rgba(0,0,0,0.6);
-            transition: all 0.5s ease-in-out;
-        }
-
-        @media (min-width: 768px) { .result-box { padding: 35px; } }
-
-        .result-header {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 25px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 15px;
-        }
-
-        @media (min-width: 600px) {
-            .result-header {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-        }
-
-        .story-title { 
-            color: #fff; 
-            font-size: 1.3rem; 
-            font-weight: 800;
-            line-height: 1.4;
-        }
-        @media (min-width: 768px) { .story-title { font-size: 1.6rem; } }
-
-        .btn-group { display: flex; gap: 10px; width: 100%; }
-        @media (min-width: 600px) { .btn-group { width: auto; } }
-
-        .btn-small {
-            flex: 1;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1px solid var(--primary-color);
-            background: transparent;
-            color: var(--primary-color);
-            transition: 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .btn-small:hover { background: var(--primary-color); color: #000; }
-
-        .btn-continue {
-            background: linear-gradient(45deg, #ff007f, #8a2be2) !important;
-            color: white !important;
-            border: none !important;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
-        }
-
-        .btn-continue:hover { box-shadow: 0 0 25px rgba(255, 0, 127, 0.7); }
-
-        .chapter-badge {
-            display: inline-block;
-            padding: 5px 12px;
-            background: rgba(255, 0, 127, 0.2);
-            border: 1px solid var(--accent-color);
-            color: #fff;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Area Isi Cerita dengan Animasi Ganti */
-        .story-display {
-            line-height: 1.8;
-            font-size: 0.95rem;
-            white-space: pre-wrap;
-            color: #e0e0e0;
-            word-break: break-word;
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        @media (min-width: 768px) { .story-display { font-size: 1.05rem; } }
-
-        /* Kelas Animasi Transisi */
-        .story-fade-out {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-
-        .story-fade-in {
-            animation: fadeInUp 0.5s forwards;
-        }
-
-        /* Loading Spinner */
         .loading {
             display: none;
             text-align: center;
-            margin: 20px 0;
+            margin: 30px 0;
             animation: fadeIn 0.3s;
         }
 
         .spinner {
-            width: 45px; height: 45px;
+            width: 50px; height: 50px;
             border: 4px solid rgba(102, 252, 241, 0.1);
             border-top: 4px solid var(--primary-color);
             border-radius: 50%;
@@ -236,210 +142,115 @@
         @keyframes spin { 100% { transform: rotate(360deg); } }
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
     </style>
 </head>
 <body>
 
     <header>
         <h1><i class="fa-solid fa-dragon"></i> AnimeStory<span>AI</span></h1>
-        <p>Sistem AI Menulis Light Novel & Cerita Anime</p>
+        <p>Sistem Generator Novel & Cerita Anime Utuh Ber-Chapter</p>
     </header>
 
     <div class="container">
         <div class="generator-box">
-            <div class="form-group">
-                <label><i class="fa-solid fa-tags"></i> Genre</label>
-                <input type="text" id="genre" placeholder="Contoh: Action, Romance, Isekai">
+            <div class="form-row">
+                <div class="form-group">
+                    <label><i class="fa-solid fa-tags"></i> Genre</label>
+                    <input type="text" id="genre" placeholder="Contoh: Isekai, Action, Fantasy">
+                </div>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-earth-asia"></i> Latar Kota / Negara</label>
+                    <input type="text" id="location" placeholder="Contoh: Tokyo Modern, Kerajaan Elvoria">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label><i class="fa-solid fa-list-ol"></i> Jumlah Total Chapter</label>
+                    <select id="totalChapters">
+                        <option value="3">3 Chapter (Pendek)</option>
+                        <option value="5">5 Chapter (Sedang)</option>
+                        <option value="7">7 Chapter (Panjang)</option>
+                        <option value="10">10 Chapter (Sangat Panjang)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-flag-checkered"></i> Akhir Cerita (Ending)</label>
+                    <select id="endingStyle">
+                        <option value="Happy Ending dan semua konflik tuntas">Happy Ending</option>
+                        <option value="Sad Ending yang emosional dan mengharukan">Sad Ending</option>
+                        <option value="Plot Twist tidak terduga namun tetap tamat bener-bener end">Plot Twist Ending</option>
+                    </select>
+                </div>
             </div>
             
             <div class="form-group">
-                <label><i class="fa-solid fa-pen-nib"></i> Sinopsis Dasar</label>
-                <textarea id="synopsis" rows="3" placeholder="Ceritakan ide dasar ceritamu di sini..."></textarea>
+                <label><i class="fa-solid fa-pen-nib"></i> Sinopsis Dasar / Ide Cerita</label>
+                <textarea id="synopsis" rows="4" placeholder="Ceritakan ide dasarmu di sini..."></textarea>
             </div>
 
-            <button class="btn" onclick="startNewStory()">
-                <i class="fa-solid fa-wand-magic-sparkles"></i> Buat Cerita Baru
+            <button class="btn" onclick="generateEpicStory()">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Racik & Buka Buku Cerita
             </button>
         </div>
 
         <div class="loading" id="loading">
             <div class="spinner"></div>
-            <p id="loadingText" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600;"></p>
-        </div>
-
-        <div class="result-box" id="resultBox">
-            <div class="result-header">
-                <div class="story-title" id="displayTitle">Judul Anime</div>
-                <div class="btn-group">
-                    <button class="btn-small" onclick="copyCurrentChapter()">
-                        <i class="fa-solid fa-copy"></i> Salin
-                    </button>
-                    <button class="btn-small btn-continue" id="continueBtn" onclick="continueStory()">
-                        <i class="fa-solid fa-forward"></i> Lanjutkan
-                    </button>
-                </div>
-            </div>
-            
-            <div class="chapter-badge" id="chapterBadge">Chapter 1</div>
-            
-            <div id="storyContent" class="story-display"></div>
+            <p id="loadingText" style="font-size: 0.95rem; color: var(--primary-color); font-weight: 600;">AI sedang meracik seluruh chapter novelmu... Harap tunggu, ini membutuhkan waktu agak lama karena ceritanya dibuat langsung lengkap tanpa gantung.</p>
         </div>
     </div>
 
     <script>
-        let currentChapter = 1;
-        let storyHistory = ""; 
-        let mainTitle = "";
+        async function generateEpicStory() {
+            const genre = document.getElementById('genre').value;
+            const location = document.getElementById('location').value;
+            const totalChapters = document.getElementById('totalChapters').value;
+            const endingStyle = document.getElementById('endingStyle').value;
+            const synopsis = document.getElementById('synopsis').value;
 
-        async function callAI(prompt) {
+            if (!genre || !location || !synopsis) {
+                return alert("Harap isi semua kolom input data cerita!");
+            }
+
+            const loading = document.getElementById('loading');
+            loading.style.display = 'block';
+
+            // Membuat Mega Prompt agar AI langsung memproses sekaligus ber-chapter terstruktur
+            const prompt = `Buatkan sebuah cerita anime/light novel yang lengkap, panjang, mendalam, dan selesai sepenuhnya dari awal sampai akhir tanpa menggantung.
+            Detail Cerita:
+            - Genre: ${genre}
+            - Latar Tempat: ${location}
+            - Total Target: ${totalChapters} Chapter
+            - Jenis Akhir: ${endingStyle}
+            - Sinopsis Ide Dasar: ${synopsis}
+
+            Aturan Format Penulisan:
+            1. Di baris paling pertama tulis judulnya dengan format -> JUDUL: [Ketik Nama Judul Disini]
+            2. Di bawah judul, bagi penulisan cerita secara teratur menggunakan tanda pembatas bab yang jelas seperti ini -> === CHAPTER [Nomor Bab]: [Judul Bab] ===
+            3. Pada chapter terakhir (Chapter ${totalChapters}), pastikan alurnya benar-benar tamat (END) secara memuaskan dan tidak menggantung. Setiap babnya harus ditulis panjang dan seru.`;
+
             try {
                 const response = await fetch(`https://api.lexcode.biz.id/api/ai/deepseek-v4-pro?text=${encodeURIComponent(prompt)}`);
                 const data = await response.json();
-                return data.result || data.reply || data.text || null;
+                loading.style.display = 'none';
+
+                const rawStory = data.result || data.reply || data.text || null;
+
+                if (rawStory) {
+                    // Menyimpan data hasil ke localStorage browser supaya bisa dioper ke file cerita.html
+                    localStorage.setItem("generated_anime_story", rawStory);
+                    
+                    // Alihkan halaman ke tempat pembacaan novel khusus
+                    window.location.href = "cerita.html";
+                } else {
+                    alert("Gagal meracik cerita. Silakan coba lagi.");
+                }
+
             } catch (error) {
                 console.error(error);
-                alert("Koneksi gagal atau terputus. Silakan coba lagi.");
-                return null;
+                loading.style.display = 'none';
+                alert("Terjadi kesalahan koneksi API.");
             }
-        }
-
-        async function startNewStory() {
-            const genre = document.getElementById('genre').value;
-            const synopsis = document.getElementById('synopsis').value;
-
-            if (!genre || !synopsis) return alert("Isi Genre dan Sinopsis!");
-
-            currentChapter = 1;
-            storyHistory = "";
-            
-            const storyContent = document.getElementById('storyContent');
-            const resultBox = document.getElementById('resultBox');
-            const loading = document.getElementById('loading');
-            
-            // Sembunyikan box lama & tampilkan loading awal
-            resultBox.style.display = 'none';
-            document.getElementById('loadingText').innerText = "AI sedang menulis Chapter 1...";
-            loading.style.display = 'block';
-
-            const prompt = `Buatkan sebuah cerita anime/light novel.
-            Genre: ${genre}
-            Sinopsis: ${synopsis}
-            
-            Aturan Output:
-            1. Tuliskan usulan judul di baris paling awal dengan format khusus ini -> JUDUL: [Ketik Judul Disini]
-            2. Mulai tulis isi cerita Chapter 1 secara naratif, seru, dan panjang di bawahnya.`;
-
-            const result = await callAI(prompt);
-            loading.style.display = 'none';
-
-            if (result) {
-                if (result.includes("JUDUL:")) {
-                    const lines = result.split("\n");
-                    const titleLine = lines.find(l => l.includes("JUDUL:"));
-                    mainTitle = titleLine.replace("JUDUL:", "").replace(/[\[\]]/g, "").trim();
-                    storyHistory = result.replace(titleLine, "").trim();
-                } else {
-                    mainTitle = "Petualangan Utama";
-                    storyHistory = result.trim();
-                }
-                
-                // Terapkan ke UI
-                document.getElementById('displayTitle').innerText = mainTitle;
-                document.getElementById('chapterBadge').innerText = `Chapter 1`;
-                storyContent.innerText = storyHistory;
-                
-                resultBox.style.display = 'block';
-                resultBox.classList.add('story-fade-in');
-                resultBox.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        async function continueStory() {
-            const storyContent = document.getElementById('storyContent');
-            const loading = document.getElementById('loading');
-            const nextChapter = currentChapter + 1;
-
-            // 1. Animasi keluar (Fade Out) teks chapter lama
-            storyContent.classList.add('story-fade-out');
-            
-            // Tunggu animasi fade out selesai baru tampilkan loading spinner
-            setTimeout(() => {
-                document.getElementById('loadingText').innerText = `AI sedang menyusun Chapter ${nextChapter}...`;
-                loading.style.display = 'block';
-                // Scroll agar fokus ke arah loading teks
-                loading.scrollIntoView({ behavior: 'smooth' });
-            }, 400);
-            
-            // Ambil potongan konteks cerita terakhir agar nyambung
-            const lastContext = storyHistory.slice(-2500); 
-
-            const prompt = `Lanjutkan cerita novel/anime berjudul "${mainTitle}".
-            Potongan alur cerita terakhir:
-            "${lastContext}"
-            
-            Tugas Anda:
-            Tulis kelanjutan cerita langsung untuk masuk ke "Chapter ${nextChapter}". Tulis ceritanya mengalir secara naratif, seru, dan panjang tanpa mengulang kalimat pembuka di awal.`;
-
-            const result = await callAI(prompt);
-            loading.style.display = 'none';
-
-            if (result) {
-                currentChapter = nextChapter;
-                const cleanResult = result.trim();
-                storyHistory += "\n\n" + cleanResult; // Simpan ke histori utama total
-
-                // 2. Pasang teks baru, perbarui badge, hilangkan class fade-out, tambah class fade-in
-                document.getElementById('chapterBadge').innerText = `Chapter ${currentChapter}`;
-                storyContent.innerText = cleanResult;
-                
-                storyContent.classList.remove('story-fade-out');
-                storyContent.classList.add('story-fade-in');
-                
-                // Bersihkan kelas animasi setelah selesai agar bisa dipakai lagi nanti
-                setTimeout(() => {
-                    storyContent.classList.remove('story-fade-in');
-                }, 500);
-
-                document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth' });
-            } else {
-                // Jika gagal balikan teks lama agar tidak kosong
-                storyContent.classList.remove('story-fade-out');
-            }
-        }
-
-        function copyCurrentChapter() {
-            const title = document.getElementById('displayTitle').innerText;
-            const badge = document.getElementById('chapterBadge').innerText;
-            const content = document.getElementById('storyContent').innerText;
-            const fullText = `${title}\n${badge}\n\n${content}`;
-
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(fullText).then(() => {
-                    alert(`${badge} berhasil disalin!`);
-                }).catch(() => {
-                    fallbackCopy(fullText);
-                });
-            } else {
-                fallbackCopy(fullText);
-            }
-        }
-
-        function fallbackCopy(text) {
-            const textArea = document.createElement("textarea");
-            textArea.value = text;
-            textArea.style.position = "fixed"; 
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            try {
-                document.execCommand('copy');
-                alert("Cerita berhasil disalin!");
-            } catch (err) {
-                alert("Gagal menyalin teks.");
-            }
-            document.body.removeChild(textArea);
         }
     </script>
 </body>
